@@ -1,0 +1,23 @@
+Package: deepdanio
+Type: Package
+Title: Zebrafish swimming kinematics from DeepLabCut pose estimation 
+Version: 0.1.1
+Author: Jeffrey Widrick, <jeffrey.widrick@childrens.harvard.edu>
+Maintainer: Jeffrey Widrick, <jeffrey.widrick@childrens.harvard.edu>
+Description: Calculate two-dimensional swimming kinematics of zebrafish larvae (Danio rerio). Angular and linear kinematics are derived from the x- and y-coordinates of 7 anatomical keypoints previously identified by a DeepLabCut neural network. Kinematic properties, such as distance covered, instantaneous peak speed, and tail stroke amplitude and frequency are useful for evaluating zebrafish models of skeletal muscle disease and other acute or chronic movement disorders. 
+Import: 
+    knitr,
+    tidyverse,
+    patchwork,
+    RcppRoll,
+    pracma,
+    data.table,
+    kableExtra
+License: MIT + file LICENSE 
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.3.2
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

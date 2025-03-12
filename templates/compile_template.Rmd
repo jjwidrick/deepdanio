@@ -1,0 +1,83 @@
+---
+output: html_document
+---
+
+This template describes how to use the `kin_compile` function of the `deepdanio` package.
+
+**kin_compile** takes the processed DLC .csv files (the 'by_ms.csv' and the 'one_row.csv' files) and compiles them into the following three df's: *by_ms.df*, *trials.df*, and *means.df*. Each of these df's is described below.
+
+While doing this, **kin_compile** integrates metadata (strain, phenotype, genotype, dpf,treatment, etc.) into each df. **kin_compile** also numbers the fish consecutively to provide a compact fish ID system.
+
+Each df is used for a different question: the *by_ms.df* for a ms-by-ms view of the swimming response for each trial, the *trials.df* to see how kinematic variables varied across trials for a fish, and the *means.df* which is used for final analysis of swimming kinematics.
+
+The current Rmd (`compile.Rmd`) calls `kin_compile` provided the following 4 steps are completed.
+
+
+```{r setup, include=FALSE}
+library(knitr)
+library(tidyverse)
+library(fishphys)
+
+knitr::opts_chunk$set(echo = FALSE, 
+                      warning=FALSE, 
+                      message=FALSE, 
+                      fig.width=10, 
+                      fig.height=11)
+```
+
+
+```{r}
+
+# Specify the path to the directory holding your results files
+  data_dir    <- "./test_results" 
+
+# Specify the path to a new directory, the 'compiled_results_dir', that will hold the compiled results
+  results_dir <- "./final_dfs"
+ 
+# Specify the path to the metadata file. 
+  metadata_file <- "230202_metadata.csv" 
+
+# Give a name to your project.
+  project <- "test_trial" 
+  
+  
+# YOU ARE NOW READY TO KNIT THIS Rmd.
+
+```
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+
+kin_compile(project, data_dir, results_dir, metadata_file)
+
+```
+
+
+
+# Three data frames have been generated and saved to your 'results_dir'.
+
+<br>
+
+#### The **'by_ms.csv'** consists of the kinematics of each fish on a ms-by-ms basis. It is used if you want to plot the *response* of a fish for a trial, for instance the distance covered every ms by a fish on a given trial (video).
+
+<br>
+
+#### The **'by_trials.csv'** consists of the overall kinematic variables and kinematic variables broken down by stage. Variables are presented for each trail of each fish. This df is used if you want to check the trial-to-trial repreatability of a kinematic variable. 
+
+<br>
+
+#### The **'fish_means.csv'** is the 'by_trials.csv' data collapsed across trials into a mean value for each fish. Each fish is therefore represented by a single row in the df, with the kinematic variables representing the mean of the trials. The majority of your statistical analysis will use this dataframe.
+
+
+# The next step is to run the initial analysis script. This creates the final files to use for statistics by eliminating poor experiments/outliers, joining other df's such as physiology data, etc. 
+
+

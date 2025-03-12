@@ -1,0 +1,15 @@
+name	value	definition
+pix.per.mm	45      	calibration constant (pix/mm) 
+fps	1000      	video frames/s
+total.ms	150     	total time camera will record (in ms)
+pre.stim.ms	10      	recording time before delivery of stimulus (in ms)
+total.move.ms	60           	time span for movement analysis (in ms)
+pt.for.dis.dpl	"S2" 	the body point for measuring distance, displacement (S1, S2, or COM)
+ang.smo.span 	0.10        	span for loess smoothing of angles (0 to 1)
+dis.smo.span	0.10        	span for loess smoothing of distance, displacement (0 to 1)
+spd.smo.span	0.7         	span for loess smoothing of speed (0 to 1)
+move.detect	"tail.curve" 	body segment for detection of movement (either 'body.curve' or 'tail.curve')
+move.threshold	2	movement detection threshold (in degrees)
+stage.detect 	"tail.curve"  	body segment for detection of ER stages ('body.curve' or 'tail.curve')
+pk.vl.threshold	45	ignore the first detected "peak" if < or > than this threshold (degrees)
+like.threshold	0.98	flag likelihood values less than this threshold

@@ -1,0 +1,82 @@
+---
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+library(tidyverse)
+library(patchwork)
+library(RcppRoll) 
+library(pracma)     
+library(data.table)
+library(kableExtra)
+library(fishphys)
+
+knitr::opts_chunk$set(echo = FALSE, 
+                      warning=FALSE, 
+                      message=FALSE, 
+                      fig.width=10, 
+                      fig.height=11,
+                      results='asis')
+```
+
+
+```{r}
+
+# INSTRUCTIONS
+
+# 1. Select the analysis mode by setting `eval=TRUE' in ONE of the chunks below.
+#    Only one chunk can have `eval=TRUE', the other chunks need to be set to `eval=FALSE'.
+
+# 2. Enter the appropriate info where required.
+
+# 3. knit
+
+
+# options:
+# turn on/off saving pk_vl_df (only need ON for diagnostics)
+pk_vl_save <- FALSE
+```
+
+
+```{r eval=FALSE}
+
+# DAQ ANALYSIS MODE
+# this is the mode you should chose when collecting videos and extracting coordinates with DLC
+# the current Rmd ('fishphys.Rmd') and the .csv file of coordinates should be in the same folder
+# indicate whether you want plots of the results
+
+kin_setup(analysis.mode = "DAQ", 
+              plots = TRUE)
+ 
+```   
+
+
+```{r eval=FALSE}
+
+# SINGLE ANALYSIS MODE
+# specify 'data_dir' and 'video.ID.no'.
+# The results file will be saved in your working dir (dir containing 'extract.Rmd').
+# indicate whether you want plots of the results.
+
+kin_setup(analysis.mode = "single", 
+             data_dir = "./test_data/clutch01_day2", 
+             video.ID.no = "01128", 
+             plots = TRUE)
+
+```
+
+
+```{r eval=TRUE}
+
+# BATCH ANALYSIS MODE
+# specify 'data_dir' and 'results_dir'.
+# indicate whether you want plots of the results.
+
+kin_setup(analysis.mode = "batch", 
+             data_dir = "./test_data/clutch02_day2", 
+             results_dir = "./test_results", 
+             plots = TRUE)
+
+```
+

@@ -1,0 +1,72 @@
+---
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+library(tidyverse)
+library(patchwork)
+library(RcppRoll) 
+library(pracma)     
+library(data.table)
+library(kableExtra)
+library(deepdanio)
+
+knitr::opts_chunk$set(echo = FALSE, 
+                      warning=FALSE, 
+                      message=FALSE, 
+                      fig.width=10, 
+                      fig.height=11,
+                      results='asis')
+```
+
+```{r}
+
+source("./src/dd_kinematics.R")
+
+```
+
+
+```{r eval = FALSE}
+
+# test DAQ mode
+# need one DLC .csv file in working directory
+dd_kinematics(analysis_mode   = ("DAQ"), 
+              single_video_ID = NA,
+              DLC_data_dir    = NA, 
+              settings_file   = ("./DAQ_mode_test_results/settings.txt"), 
+              kin_results_dir = ("./DAQ_mode_test_results"), 
+              plots           = TRUE, 
+              pk_vl_save      = FALSE)
+```
+
+
+
+```{r eval = FALSE}
+
+# test single mode
+dd_kinematics(analysis_mode   = ("single"), 
+              single_video_ID = "01128",
+              DLC_data_dir    = ("./DLC_test_data/clutch01_day2"), 
+              settings_file   = ("./DLC_test_data/clutch01_day2/clutch01_day2_settings.txt"), 
+              kin_results_dir = ("./kin_test_results"), 
+              plots           = TRUE, 
+              pk_vl_save      = TRUE)
+```
+
+
+
+```{r eval = TRUE}
+
+# test batch mode
+dd_kinematics(analysis_mode   = ("batch"), 
+              single_video_ID = NA,
+              DLC_data_dir    = ("./DLC_test_data/clutch01_day2"), 
+              settings_file   = ("./DLC_test_data/clutch01_day2/clutch01_day2_settings.txt"), 
+              kin_results_dir = ("./kin_test_results"), 
+              plots           = FALSE, 
+              pk_vl_save      = FALSE)
+
+```
+
+

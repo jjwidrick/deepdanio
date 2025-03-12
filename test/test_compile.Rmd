@@ -1,0 +1,19 @@
+---
+title: "deepdanio compile test"
+output: html_document
+date: "2025-03-06"
+---
+
+
+
+```{r, echo=FALSE}
+library(tidyverse)
+library(deepdanio)
+
+source("./src/dd_compile.R")
+
+kin_compile(project = "test", 
+           data_dir = "./kin_test_results", 
+           results_dir = "./compiled_test_results", 
+           metadata_file = "./metadata/230202_metadata.csv")
+```
